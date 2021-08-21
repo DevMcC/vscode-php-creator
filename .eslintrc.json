@@ -1,0 +1,24 @@
+{
+    "root": true,
+    "env": { "node": true },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": { "project": "./tsconfig.json" },
+    "extends": ["airbnb-typescript/base"],
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+        "@typescript-eslint/explicit-member-accessibility": ["error"], // You should always define accessibility.
+        "@typescript-eslint/indent": [2, 4, { "SwitchCase": 1 }], // 2 spaces are difficult to read.
+        "import/prefer-default-export": "off", // Named exports are better.
+        "max-len": [2, { "code": 120 }], // Max length of 120 should be consistent with other languages.
+        "class-methods-use-this": "off", // Limits implementations.
+        "no-plusplus": "off", // No.
+        "no-continue": "off", // `continue` is the process of elimination within a loop, very useful and readable.
+
+        "no-restricted-syntax": [ // The main argument against for...of does not apply here.
+            "error",
+            { "selector": "ForInStatement", "message": "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array." },
+            { "selector": "LabeledStatement", "message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand." },
+            { "selector": "WithStatement", "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize." }
+        ]
+    }
+}
